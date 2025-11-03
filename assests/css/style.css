@@ -1,0 +1,31 @@
+body {
+    /* 1. Reset margins and set full screen height */
+    margin: 0;
+    padding: 0;
+    height: 100vh; 
+    
+    /* 2. Set the image using the CORRECT RELATIVE PATH */
+    background-image: url('../images/loginpage.jpg'); 
+    background-color: #0d1a2b; 
+    background-size: cover; 
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed; 
+} 
+
+
+/* Make the overall welcome text readable */
+.text-center h1,
+.text-center p {
+    color: white !important; /* Forces the text to be visible against the dark image */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Adds shadow for better contrast */
+    z-index: 10;
+    position: relative;
+}
+
+/* Style the Bootstrap Cards to stand out from the background image */
+.card {
+    background: rgba(255, 255, 255, 0.9); /* Semi-transparent white card background */
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4) !important; /* Stronger shadow to pop out */
+}
