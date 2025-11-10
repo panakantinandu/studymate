@@ -19,7 +19,7 @@ $totalSubjects   = $pdo->query("SELECT COUNT(*) FROM subjects")->fetchColumn();
 $totalSessions   = $pdo->query("SELECT COUNT(*) FROM session_requests")->fetchColumn();
 $totalRatings    = $pdo->query("SELECT COUNT(*) FROM ratings")->fetchColumn();
 $totalTickets    = $pdo->query("SELECT COUNT(*) FROM feedback_tickets")->fetchColumn();
-$totalQuizzes    = $pdo->query("SELECT COUNT(*) FROM quizzes")->fetchColumn();
+//$totalQuizzes    = $pdo->query("SELECT COUNT(*) FROM quizzes")->fetchColumn();
 
 // --- TOP 5 RATED COURSES ---
 $topCourses = $pdo->query("
