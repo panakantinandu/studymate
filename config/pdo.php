@@ -1,9 +1,9 @@
 <?php
 
 $host = 'localhost';
-$db   = 'studymate_db';
-$user = 'root';
-$pass = '';
+$db   = '';//replace it with your database name
+$user = '';// replace your user
+$pass = '';// replace your password
 $charset = 'utf8mb4';
 
 try {
