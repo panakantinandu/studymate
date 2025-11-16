@@ -1,0 +1,36 @@
+# ============================
+# PHP / StudyMate WebApp
+# ============================
+
+# Sensitive config
+config/pdo.php
+config/*.env
+.env
+*.env
+
+# Composer
+vendor/
+composer.lock
+
+# Node (in case you add tools later)
+node_modules/
+
+# IDE files
+.vscode/
+.idea/
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Cache
+cache/
+tmp/
+
+# Uploaded files (if any)
+uploads/
+assets/uploads/

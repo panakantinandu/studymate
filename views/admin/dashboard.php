@@ -1,14 +1,16 @@
 <?php
-session_start();
+require_once __DIR__ . '/../../includes/auth.php';
+require_admin(); 
 require_once __DIR__ . '/../../config/pdo.php';
-//include_once '../../includes/header_admin.php';
-include_once '../../includes/navbar_admin.php';
+include_once __DIR__ . '/../../includes/navbar_admin.php';
 
 // --- ACCESS CONTROL ---
-if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'admin') {
-    header("Location: ../../index.php");
+if (empty($_SESSION['username']) || ($_SESSION['role'] ?? '') !== 'admin') {
+    header("Location: ../../auth/login_admin.php");
     exit;
 }
+
+
 
 // --- SUMMARY STATISTICS ---
 $totalUsers      = $pdo->query("SELECT COUNT(*) FROM users")->fetchColumn();
