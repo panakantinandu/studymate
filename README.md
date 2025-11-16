@@ -106,8 +106,8 @@ cd StudyMate
 ### 2️⃣ Create the Database
 
 1. Open phpMyAdmin
-2. Create a database: `studymate_db`
-3. Import `studymate.sql`
+2. Create a database: `enter database name`
+3. Import `database name.sql`
 
 ### 3️⃣ Configure Database Connection
 
@@ -127,11 +127,11 @@ $pdo = new PDO($dsn, $username, $password, [
 
 Place the project in your web server folder:
 
-* **XAMPP** → `htdocs/StudyMate/`
+* **XAMPP** → `htdocs/database name/`
 * Visit:
 
 ```
-http://localhost/StudyMate/
+http://localhost/database name/
 ```
 
 ---
@@ -218,5 +218,3 @@ MIT License.
 
 ---
 
-✅ A **professional README table of contents**
-Just say the word.
