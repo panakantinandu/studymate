@@ -1,224 +1,222 @@
-# 🎓 StudyMate – Peer Learning & Scheduling Platform  
+---
 
-![PHP](https://img.shields.io/badge/PHP-8.0+-777BB4?logo=php&logoColor=white)
-![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?logo=mysql&logoColor=white)
-![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3-7952B3?logo=bootstrap&logoColor=white)
-![License](https://img.shields.io/badge/license-MIT-green)
+# 🎓 StudyMate – Peer Learning & Scheduling Platform
 
-A full-featured **peer learning and scheduling platform** built using **PHP + MySQL**, designed to help students and tutors collaborate through real-time study sessions, shared availability, and feedback.
+A complete **peer learning WebApp** built using **PHP, MySQL, Bootstrap, jQuery**, providing students and tutors an organized way to schedule sessions, exchange feedback, manage availability, and collaborate effectively.
 
 ---
 
-## 🧭 System Architecture Overview
+## 🧭 System Overview
 
-```text
-         ┌─────────────────────┐
-         │      Admin Panel    │
-         │  - Manage users     │
-         │  - Monitor sessions │
-         │  - View analytics   │
-         └─────────┬───────────┘
-                   │
-                   │
-         ┌─────────▼───────────┐
-         │     Application     │
-         │  (PHP + MySQL)      │
-         │─────────────────────│
-         │ Routes / Controllers│
-         │ Models / Views / DB │
-         └─────────┬───────────┘
-                   │
-         ┌─────────▼───────────┐
-         │      Database       │
-         │     (MySQL)         │
-         │─────────────────────│
-         │ users               │
-         │ availability         │
-         │ session_requests     │
-         │ notifications        │
-         │ session_feedback     │
-         │ subjects / user_subj │
-         └─────────┬───────────┘
-                   │
-     ┌─────────────▼─────────────────┐
-     │           Frontend            │
-     │ (Bootstrap + HTML + CSS + JS) │
-     │───────────────────────────────│
-     │ Student Dashboard             │
-     │ Tutor Dashboard               │
-     │ Session Management            │
-     │ Notifications & Ratings       │
-     │ Video Meeting (Jitsi Link)    │
-     └───────────────────────────────┘
-````
-
-**Flow Explanation**
-
-1. Users register → select subjects → set availability
-2. System matches available peers based on day & time
-3. Session requests can be sent, accepted, or rejected
-4. Upon acceptance → auto-generated **meeting link** (via Jitsi)
-5. After the scheduled time → session auto-marks **completed**
-6. Both users give **ratings and comments**
-7. Admin can view system analytics, sessions, and feedback
+```
+Users → Set Subjects → Set Availability
+      ↓
+Send/Receive Session Requests
+      ↓
+Accepted Request → Auto Meeting Link (Jitsi)
+      ↓
+Session Auto-Completed After End Time
+      ↓
+Both Users Give Ratings + Feedback
+      ↓
+Admin Monitors Everything (Users, Sessions, Reports)
+```
 
 ---
 
 ## 🚀 Features
 
-### 👩‍🎓 Student Features
+### 👩‍🎓 Student / User
 
-* 📅 Set weekly availability
-* 🔍 Match with peers or tutors
-* 🤝 Send and receive session requests
-* 🔗 Auto-generated meeting links
-* 🕓 Auto session completion after time expires
-* 🔔 Reminders & notifications
-* ⭐ Give and receive ratings and feedback
-* 📊 Dashboard summary: total sessions, completed, average rating
+* Set weekly availability
+* Match with peers or tutors
+* Send/accept/reject session requests
+* Auto-generated meeting link
+* Auto-completion of past sessions
+* Notifications + reminders
+* Ratings & feedback for tutors
+* Dashboard analytics (sessions, completed, rating, unread)
 
-### 🧑‍🏫 Tutor Features
+### 🧑‍🏫 Tutor
 
 * Manage sessions with students
-* Accept/Reject requests
-* Join live study sessions via meeting link
-* Receive performance feedback
+* Accept or reject requests
+* Join live sessions
+* Receive ratings and comments
 
-### 🧑‍💼 Admin Panel
+### 🧑‍💼 Admin
 
 * Manage users, subjects, and sessions
-* Monitor ratings and analytics
-* Handle reports and feedback
+* View analytics and feedback
+* Full system monitoring
 
 ---
 
-## 🗂️ Folder Structure
+## 📁 Project Structure
 
-```bash
+```
 StudyMate/
-├── backend/
-│   ├── config/
-│   │   └── db.php
-│   ├── models/
-│   ├── routes/
-│   ├── server.php
-│   └── .env
-├── frontend/
-│   ├── student/
-│   │   ├── dashboard.php
-│   │   ├── availability.php
-│   │   ├── session_requests.php
-│   │   ├── ratings.php
-│   │   └── notifications.php
+├── assets/
+│   ├── css/
+│   ├── images/
+│   └── js/
+│       └── validation.js
+├── auth/
+│   ├── login_admin.php
+│   ├── login_student.php
+│   ├── logout.php
+│   └── register.php
+├── config/
+│   └── pdo.php              <-- (ignored in Git)
+├── functions/
+│   ├── email_helper.php
+│   ├── notification.php
+│   ├── utils.php
+│   └── validation.php
+├── includes/
+│   ├── auth.php
+│   ├── navbar_admin.php
+│   ├── session_check_admin.php
+│   ├── session_check_student.php
+│   └── session_check_teacher.php
+├── src/
+│   └── PHPMailer/           <-- Local mailer library
+├── uploads/
+│   └── profile_images/
+├── views/
 │   ├── admin/
-│   └── assets/
+│   ├── student/
+│   └── teacher/
+├── index.php
+├── logout1.php
 └── README.md
 ```
 
 ---
 
-## ⚙️ Installation Guide
+## ⚙️ Installation
 
-### 1️⃣ Clone the repository
+### 1️⃣ Clone the Repository
 
-```bash
+```sh
 git clone https://github.com/<your-username>/StudyMate.git
 cd StudyMate
 ```
 
-### 2️⃣ Set up the database
+### 2️⃣ Create the Database
 
-1. Create a database, e.g. `studymate_db`
-2. Import the provided SQL schema (`studymate.sql`) via phpMyAdmin
+1. Open phpMyAdmin
+2. Create a database: `studymate_db`
+3. Import `studymate.sql`
 
-### 3️⃣ Configure database credentials
+### 3️⃣ Configure Database Connection
 
-Edit `/config/db.php`:
+Edit `config/pdo.php` (not pushed to Git):
 
 ```php
-$host = "localhost";
-$dbname = "";//yourdatabase name
-$username = "";//replace with your username
-$password = "";//replace with your password
+$dsn      = "mysql:host=localhost;dbname=studymate_db;charset=utf8mb4";
+$username = "your_mysql_username";
+$password = "your_mysql_password";
+
+$pdo = new PDO($dsn, $username, $password, [
+  PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+]);
 ```
 
-### 4️⃣ Run the app
+### 4️⃣ Run the App
 
-If using XAMPP or WAMP:
+Place the project in your web server folder:
 
-* Place folder in `htdocs/`
+* **XAMPP** → `htdocs/StudyMate/`
 * Visit:
-  👉 `http://localhost/StudyMate/`
+
+```
+http://localhost/StudyMate/
+```
 
 ---
 
-## 🧩 Key Database Tables
+## 🗄️ Main Database Tables
 
-| Table              | Purpose                                  |
-| ------------------ | ---------------------------------------- |
-| `users`            | Stores user credentials and roles        |
-| `availability`     | User time slots for sessions             |
-| `session_requests` | Tracks all session requests and statuses |
-| `notifications`    | In-app alerts and reminders              |
-| `session_feedback` | Ratings and comments                     |
-| `subjects`         | List of subjects                         |
-| `user_subjects`    | User-subject mappings                    |
+| Table              | Description                                |
+| ------------------ | ------------------------------------------ |
+| `users`            | User credentials and roles (admin/student) |
+| `subjects`         | List of subjects                           |
+| `user_subjects`    | User–subject mapping                       |
+| `availability`     | Weekly time slots                          |
+| `session_requests` | All session requests + statuses            |
+| `notifications`    | Alerts for users                           |
+| `session_feedback` | Ratings + comments                         |
 
 ---
 
-## 🕓 Automatic Session Completion
+## ⭐ Ratings & Feedback
 
-Automatically marks sessions as **completed** when the scheduled time passes:
+After every completed session:
+
+* Both users rate each other (1–5 stars)
+* Optional comment
+* Dashboard auto-updates the average rating
+* User receives a new notification
+
+---
+
+## 🔄 Auto Session Completion
+
+Sessions automatically move to **completed** when end time passes:
 
 ```sql
 UPDATE session_requests
 SET status = 'completed'
 WHERE status = 'accepted'
-  AND session_date IS NOT NULL
-  AND CONCAT(session_date, ' ', SUBSTRING_INDEX(time_slot, '-', -1)) < NOW();
+  AND STR_TO_DATE(
+        CONCAT(session_date, ' ', SUBSTRING_INDEX(time_slot, '-', -1)),
+        '%Y-%m-%d %h:%i %p'
+      ) < NOW();
 ```
 
 ---
 
-## ⭐ Rating & Feedback System
+## 📬 Email Support (PHPMailer)
 
-After each completed session:
+Located in `functions/email_helper.php`:
 
-* Both users are prompted to rate each other (1–5 stars)
-* Optional text feedback
-* Average rating auto-updates on dashboard
-* Peer gets a notification of the new rating
+```php
+$mail->Host = 'smtp.gmail.com';
+$mail->Username = 'your_email@gmail.com';
+$mail->Password = 'your_app_password';
+$mail->Port = 587;
+$mail->SMTPSecure = 'tls';
+```
 
----
+Used for:
 
-## 🧠 Future Enhancements
-
-* 📧 Email & SMS reminders (cron-based)
-* 🗓️ Google Calendar integration
-* 💬 Real-time chat with WebSockets
-* 📊 Analytics dashboard for Admin
-* 👥 Group study sessions (multi-user)
-* 🤖 AI-based smart peer recommendations
+* Sending OTP for password reset
+* Account notifications
 
 ---
 
+## 🧠 Future Improvements
 
-## 🤝 Contributing
-
-Contributions are welcome!
+* SMS + email reminders (cron)
+* Google Calendar sync
+* Real-time chat
+* Group study sessions
+* AI-based peer recommendations
 
 ---
 
-## 📜 License
+## 📝 License
 
-This project is licensed under the **MIT License**.
+MIT License.
 
 ---
 
 ## 👨‍💻 Author
 
 **Nandu Panakanti**
-📧 Mail: panakantinandu@gmail.com
-🌐 Github: https://github.com/panakantinandu
-💬 “Study hard, stay consistent, and help others learn — that’s what StudyMate stands for.” 🎯
 
+---
+
+✅ A **professional README table of contents**
+Just say the word.
